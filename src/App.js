@@ -1,25 +1,34 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import { Route, Switch } from "react-router-dom";
+
+import firebase, { FirebaseContext } from "./firebase"; //desde el index.js de la carpeta ./firebase
+
+import Ordenes from "./components/paginas/Ordenes";
+import Menu from "./components/paginas/Menu";
+import NuevoPlatillo from "./components/paginas/NuevoPlatillo";
+
+import Sidebar from "./components/common-ui/Sidebar";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <FirebaseContext.Provider
+      value={{
+        firebase
+      }}
+    >
+      <div className="md:flex min-h-screen">
+
+        <Sidebar />
+
+        <div className="md:w-3/5 xl:w-4/5 p-6">
+          <Switch>
+            <Route exact path="/" component={Ordenes} />
+            <Route exact path="/menu" component={Menu} />
+            <Route exact path="/nuevo-platillo" component={NuevoPlatillo} />
+          </Switch>
+        </div>
+      </div>
+    </FirebaseContext.Provider>
   );
 }
 
