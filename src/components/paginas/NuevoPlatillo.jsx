@@ -90,8 +90,7 @@ const NuevoPlatillo = () => {
 
   return (
     <>
-      <h1 className="text-3xl font-light mb-4">Desde NuevoPlatillo.jsx</h1>
-
+      <h1 className='text-5xl font-light mb-4'>Agrega platillos al menú 🍔</h1>
       <div className="flex justify-center mt-5">
         <div className="w-full max-w-3xl">
           <form onSubmit={formik.handleSubmit}>
